@@ -30,7 +30,20 @@
   display: none;
 }
 .invalid-feedback {
-  color: #a94442;
-  display: block;
+  color: red;
+  text-transform: capitalize;
+  // display: block;
   margin: -1rem 0 2rem;
+  // position: absolute;
+  // top: 10px;
+}
+// .help-block {
+//   color: red;
+//   text-transform: capitalize;
+//   position: absolute;
+//   top: 37px;
+// }
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
 }
