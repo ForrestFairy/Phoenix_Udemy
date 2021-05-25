@@ -19,7 +19,6 @@ defmodule DiscussWeb.UserSocket do
   def connect(%{"token" => token}, socket, _connect_info) do
     case Phoenix.Token.verify(socket, "key", token) do
       {:ok, user_id} ->
-
         {:ok, assign(socket, :user_id, user_id)}
       {:error, _reason} ->
         :error

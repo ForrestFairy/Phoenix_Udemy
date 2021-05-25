@@ -1,4 +1,4 @@
-<h4>Topics</h4>
+<h5>Topics</h5>
 
 <ul class="collection">
     <%= for topic <- @topics do %>
@@ -7,7 +7,6 @@
 
             <%= if @conn.assigns.user.id == topic.user_id do %>
                 <div class="right">
-
                     <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
                     <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>
                 </div>
@@ -17,7 +16,7 @@
 </ul>
 
 <div class="fixed-action-btn">
-    <%= link to: Routes.topic_path(@conn, :new),  class: "btn-floating btn-large waves-effect waves-light red" do%>
+    <%= link to: Routes.topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
         <i class="material-icons">add</i>
     <% end %>
 </div>

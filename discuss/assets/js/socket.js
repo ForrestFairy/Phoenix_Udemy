@@ -55,13 +55,17 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 
-const createSocket = (topicId) => {
+const createSocket = topicId => {
   // Now that you are connected, you can join channels with a topic:
   let channel = socket.channel(`comments:${topicId}`, {})
   channel.join()
-    .receive("ok", resp => { renderComments(resp.comments);
-    console.log(resp)})
-    .receive("error", resp => { console.log("Unable to join", resp) })
+    .receive("ok", resp => { 
+      console.log(resp);
+      renderComments(resp.comments);
+    })
+    .receive("error", resp => {
+      console.log("Unable to join", resp);
+    })
 
   channel.on(`comments:${topicId}:new`, renderComment);
 
@@ -70,7 +74,7 @@ const createSocket = (topicId) => {
 
       channel.push('comment:add', { content: content });
     });
-  }
+  };
 
 function renderComments(comments) {
   const renderedComments = comments.map(comment => {
@@ -89,7 +93,7 @@ function renderComment(event) {
 function commentTemplate(comment) {
   let email = 'Anonymous';
   if (comment.user) {
-    email = comment.user.email
+    email = comment.user.email;
   }
 
   return `
